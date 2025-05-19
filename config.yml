@@ -1,9 +1,9 @@
-token: "xxxxxxxxxxxxxxxxxxxxxx"    # Lichess OAuth2 Token.
+token: ${LICHESS_BOT_TOKEN}    # Lichess OAuth2 Token.
 url: "https://lichess.org/"        # Lichess base URL.
 
 engine:                            # Engine settings.
   dir: "./engines/"                # Directory containing the engine. This can be an absolute path or one relative to lichess-bot/.
-  name: "engine_name"              # Binary name of the engine to use.
+  name: "rooky"              # Binary name of the engine to use.
 # interpreter: "java"
 # interpreter_options:
 #   - "-jar"
@@ -16,8 +16,8 @@ engine:                            # Engine settings.
     enabled: false                 # Activate polyglot book.
     book:
       standard:                    # List of book file paths for variant standard.
-        - engines/book1.bin
-        - engines/book2.bin
+#        - engines/book1.bin
+#        - engines/book2.bin
 #     atomic:                      # List of book file paths for variant atomic.
 #       - engines/atomicbook1.bin
 #       - engines/atomicbook2.bin
@@ -90,15 +90,15 @@ engine:                            # Engine settings.
 #   Hash: 256
 
   uci_options:                     # Arbitrary UCI options passed to the engine.
-    Move Overhead: 100             # Increase if your bot flags games too often.
-    Threads: 4                     # Max CPU threads the engine can use.
-    Hash: 512                      # Max memory (in megabytes) the engine can allocate.
-    SyzygyPath: "./syzygy/"        # Paths to Syzygy endgame tablebases that the engine reads.
-    UCI_ShowWDL: true              # Show the chance of the engine winning.
-#   go_commands:                   # Additional options to pass to the UCI go command.
-#     nodes: 1                     # Search so many nodes only.
-#     depth: 5                     # Search depth ply only.
-#     movetime: 1000               # Integer. Search exactly movetime milliseconds.
+    #Move Overhead: 100             # Increase if your bot flags games too often.
+    #Threads: 4                     # Max CPU threads the engine can use.
+    #Hash: 512                      # Max memory (in megabytes) the engine can allocate.
+    #SyzygyPath: "./syzygy/"        # Paths to Syzygy endgame tablebases that the engine reads.
+    #UCI_ShowWDL: true              # Show the chance of the engine winning.
+    go_commands:                   # Additional options to pass to the UCI go command.
+      nodes: 1                     # Search so many nodes only.
+      depth: 5                     # Search depth ply only.
+      movetime: 1000               # Integer. Search exactly movetime milliseconds.
 
 # xboard_options:                  # Arbitrary XBoard options passed to the engine.
 #   cores: "4"
@@ -178,9 +178,9 @@ greeting:
   #   {opponent} to insert opponent's name
   #   {me} to insert bot's name
   # Any other words in curly braces will be removed.
-  hello: "Hi! I'm {me}. Good luck! Type !help for a list of commands I can respond to." # Message to send to opponent chat at the start of a game
+  hello: "Hi! I'm {me}. I'm just a beginner but I'll try my best!" # Message to send to opponent chat at the start of a game
   goodbye: "Good game!" # Message to send to opponent chat at the end of a game
-  hello_spectators: "Hi! I'm {me}. Type !help for a list of commands I can respond to." # Message to send to spectator chat at the start of a game
+  hello_spectators: "Hi! I'm {me}. Wow ! We have a crowd here!" # Message to send to spectator chat at the start of a game
   goodbye_spectators: "Thanks for watching!" # Message to send to spectator chat at the end of a game
 
 # pgn_directory: "game_records"    # A directory where PGN-format records of the bot's games are kept
@@ -190,10 +190,10 @@ greeting:
                                    # "all" - every game is written to a single file named "{Bot name} games.pgn"
 
 matchmaking:
-  allow_matchmaking: false         # Set it to 'true' to challenge other bots.
+  allow_matchmaking: true         # Set it to 'true' to challenge other bots.
   allow_during_games: false        # Set it to 'true' to create challenges during long games.
   challenge_variant: "random"      # If set to 'random', the bot will choose one variant from the variants enabled in 'challenge.variants'.
-  challenge_timeout: 30            # Create a challenge after being idle for 'challenge_timeout' minutes. The minimum is 1 minute.
+  challenge_timeout: 2            # Create a challenge after being idle for 'challenge_timeout' minutes. The minimum is 1 minute.
   challenge_initial_time:          # Initial time in seconds of the challenge (to be chosen at random).
     - 60
     - 180
